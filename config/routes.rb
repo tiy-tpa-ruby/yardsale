@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :items
   get 'pages/landing'
 
   root 'pages#landing'

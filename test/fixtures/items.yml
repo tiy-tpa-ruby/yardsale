@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quantity: 1
+  quality: MyString
+  description: MyString
+  image_url: MyString
+  price: 1
+  serial_number: MyString
+  purchased_on: 2017-04-10
+  name: MyString
+  sentimental: false
+
+two:
+  quantity: 1
+  quality: MyString
+  description: MyString
+  image_url: MyString
+  price: 1
+  serial_number: MyString
+  purchased_on: 2017-04-10
+  name: MyString
+  sentimental: false
