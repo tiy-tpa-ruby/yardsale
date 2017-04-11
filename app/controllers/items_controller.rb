@@ -21,6 +21,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     unless @item.can_this_user_edit?(current_user)
       send_them_back_with_error
+      return
     end
   end
 
@@ -42,6 +43,7 @@ class ItemsController < ApplicationController
 
     unless @item.can_this_user_edit?(current_user)
       send_them_back_with_error
+      return
     end
 
     if @item.update(item_params)
@@ -57,6 +59,7 @@ class ItemsController < ApplicationController
 
     unless @item.can_this_user_destroy?(user)
       send_them_back_with_error
+      return
     end
 
     @item.destroy
