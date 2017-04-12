@@ -14,3 +14,10 @@
 # ActiveSupport::Inflector.inflections(:en) do |inflect|
 #   inflect.acronym 'RESTful'
 # end
+
+# Example of adding an inflection
+
+#ActiveSupport::Inflector.inflections(:en) do |inflect|
+#  inflect.irregular 'person', 'people'
+#  inflect.irregular 'sheep', 'sheeple'
+#end

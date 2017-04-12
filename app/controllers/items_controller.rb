@@ -57,7 +57,7 @@ class ItemsController < ApplicationController
   def destroy
     @item = Item.find(params[:id])
 
-    unless @item.can_this_user_destroy?(user)
+    unless @item.can_this_user_destroy?(current_user)
       send_them_back_with_error
       return
     end
@@ -74,6 +74,6 @@ class ItemsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def item_params
-      params.require(:item).permit(:quantity, :quality, :description, :image_url, :price, :serial_number, :purchased_on, :name, :sentimental)
+      params.require(:item).permit(:quantity, :quality, :description, :image_url, :price, :serial_number, :purchased_on, :name, :sentimental, :image)
     end
 end
