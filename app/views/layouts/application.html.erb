@@ -37,6 +37,13 @@
         <ul class="nav navbar-nav">
           <li class="active"><%= link_to "Home", root_path %></li>
         </ul>
+        <% if logged_in? && action_name == "index" %>
+          <%= form_tag(items_path, method: 'GET', class: "navbar-form navbar-right search-form") do %>
+              <div class="form-group">
+                <%= text_field_tag :query, nil, class: "form-control", placeholder: "Search..." %>
+              </div>
+          <% end %>
+        <% end %>
         <ul class="nav navbar-nav navbar-right">
           <% if logged_in? %>
             <p class="navbar-text">Welcome: <%= current_user.name %></p>

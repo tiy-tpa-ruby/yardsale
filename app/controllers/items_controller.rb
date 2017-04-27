@@ -5,6 +5,9 @@ class ItemsController < ApplicationController
   def index
     if params[:query]
       @items = Item.where('name like :pattern or description like :pattern', pattern: "%#{params[:query]}%")
+
+      # You'd have to write something here to be smart.
+      @suggestion = "Ruby"
     else
       @items = Item.all
     end
