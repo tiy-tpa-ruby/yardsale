@@ -8,6 +8,11 @@
   <h1 Listing>items</h1>
 </div>
 
+<%= form_tag(items_path, method: 'GET', class: "search-form") do %>
+  <%= text_field_tag :query %>
+  <%= button_tag "Search" %>
+<% end %>
+
 <ul class="list-group">
   <%- @items.each do |item| %>
     <li class="list-group-item">

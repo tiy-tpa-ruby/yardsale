@@ -3,7 +3,11 @@ class ItemsController < ApplicationController
 
   # GET /items
   def index
-    @items = Item.all
+    if params[:query]
+      @items = Item.where('name like :pattern or description like :pattern', pattern: "%#{params[:query]}%")
+    else
+      @items = Item.all
+    end
   end
 
   # GET /items/1
