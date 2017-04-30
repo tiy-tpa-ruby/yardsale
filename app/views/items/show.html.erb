@@ -20,8 +20,10 @@
   <dt>Description:</dt>
   <dd><%= @item.description %></dd>
 
-  <dt>Image:</dt>
-  <dd><%= image_tag(@item.image_url(:small)) %></dd>
+  <% if @item.image_url(:small) %>
+    <dt>Image:</dt>
+    <dd><%= image_tag(@item.image_url(:small)) %></dd>
+  <% end %>
 
   <dt>Price:</dt>
   <dd><%= @item.price %></dd>

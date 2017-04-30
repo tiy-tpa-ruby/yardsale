@@ -18,4 +18,10 @@ $(document).ready(function() {
       dataType: 'script'
     })
   })
+
+  $('.item-description').on('click', function(event) {
+    let description = $(this).data('descriptiontext')
+
+    console.log(`Clicked on an item with a description of ${description}`)
+  })
 })

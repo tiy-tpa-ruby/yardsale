@@ -7,7 +7,9 @@
     </div>
     <div class="media-body">
       <h4 class="media-heading"><%= item.name %></h4>
-      <%= item.description %>
+      <p class='item-description' data-descriptiontext="<%= item.description %>">
+        <%= truncate(item.description, length: 20) %>
+      </p>
 
       <div class="pull-right">
         <%= link_to item do %>
