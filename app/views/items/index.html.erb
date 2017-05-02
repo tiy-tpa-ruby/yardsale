@@ -8,10 +8,6 @@
   <h1 Listing>items</h1>
 </div>
 
-<ul class="list-group items-list-group">
-  <% if @items.empty? %>
-    <%= render 'empty_items' %>
-  <% else %>
-    <%= render @items %>
-  <% end %>
-</ul>
+
+<!-- This is where the react component goes -->
+<div class="react-items"></div>
