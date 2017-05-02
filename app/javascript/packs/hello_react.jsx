@@ -34,7 +34,7 @@ class ItemCollection extends React.Component {
   itemsDomElements(items) {
     return items.
             filter((item) => this.state.query === '' || item.description.indexOf(this.state.query) != -1).
-            map((item, index) => <Item itemClick={this.handleItemClick.bind(this, item)} key={item.id} name={item.name} description={item.description} id={item.id} image_url={item.image_url}/>)
+            map((item, index) => <Item itemClick={this.handleItemClick.bind(this, item)} key={item.id} name={item.name} description={item.description} id={item.id} image_url={item.image_url} link={item.link}/>)
   }
 
   render() {

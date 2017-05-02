@@ -1,0 +1,11 @@
+<h1>There has been a new item posted</h1>
+
+<h2><%= @item.name %></h2>
+<h3><%= @item.description %></h3>
+
+<%= image_tag(@item.image_url(:small)) %>
+<p>
+  <%= link_to item_url(@item) do %>
+    Buy it now for only <%= @item.price %>
+  <% end %>
+</p>
