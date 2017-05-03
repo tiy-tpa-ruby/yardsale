@@ -21,51 +21,62 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="controller-<%= controller_name%> action-<%= action_name%>">
-  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <%= link_to "#", class: "navbar-brand" do %>
-          Yardsale
-        <% end %>
+  <header class="navbar navbar-inverse navbar-fixed-top wet-asphalt" role="banner">
+      <div class="container">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>
+          </div>
+          <div class="collapse navbar-collapse">
+              <ul class="nav navbar-nav navbar-right">
+                  <li class="active"><%= link_to "Home", root_path %></li>
+                  <% if logged_in? %>
+                    <li><%= link_to "Welcome: #{current_user.name}", root_path %></li>
+                    <li><%= link_to "View Items", items_path %></li>
+                    <li><%= link_to 'Logout', logout_path %></li>
+                  <% else %>
+                    <li><%= link_to "Sign In", login_path %></li>
+                    <li><%= link_to "Sign Up", signup_path %></li>
+                    <li><%= link_to "View Items", items_path %></li>
+                  <% end %>
+              </ul>
+          </div>
       </div>
-      <div id="navbar" class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
-          <li class="active"><%= link_to "Home", root_path %></li>
-        </ul>
-        <% if logged_in? && action_name == "index" %>
-          <%= form_tag(items_path, method: 'GET', class: "navbar-form navbar-right search-form") do %>
-              <div class="form-group">
-                <%= text_field_tag :query, nil, class: "form-control", placeholder: "Search..." %>
-              </div>
-          <% end %>
-        <% end %>
-        <ul class="nav navbar-nav navbar-right">
-          <% if logged_in? %>
-            <p class="navbar-text">Welcome: <%= current_user.name %></p>
-            <li> <%= link_to 'Logout', logout_path %></li>
-          <% else %>
-            <li><%= link_to "Login", login_path %></li>
-            <li> <%= link_to 'Signup', signup_path %></li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <div class="container">
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, class: "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable", role: "alert" do %>
-        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <%= msg %>
-      <% end %>
-    <% end %>
+  </header><!--/header-->
 
-    <%= yield %>
-  </div>
+
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, class: "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable", role: "alert" do %>
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <%= msg %>
+    <% end %>
+  <% end %>
+
+  <%= yield %>
+
+  <footer id="footer" class="midnight-blue">
+      <div class="container">
+          <div class="row">
+              <div class="col-sm-6">
+                  &copy; 2013 <a target="_blank" href="http://shapebootstrap.net/" title="Free Twitter Bootstrap WordPress Themes and HTML templates">ShapeBootstrap</a>. All Rights Reserved.
+              </div>
+              <div class="col-sm-6">
+                  <ul class="pull-right">
+                      <li><a href="#">Home</a></li>
+                      <li><a href="#">About Us</a></li>
+                      <li><a href="#">Faq</a></li>
+                      <li><a href="#">Contact Us</a></li>
+                      <li><a id="gototop" class="gototop" href="#"><i class="icon-chevron-up"></i></a></li><!--#gototop-->
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </footer><!--/#footer-->
+
 </body>
 </html>

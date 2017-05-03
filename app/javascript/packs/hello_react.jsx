@@ -34,27 +34,30 @@ class ItemCollection extends React.Component {
   itemsDomElements(items) {
     return items.
             filter((item) => this.state.query === '' || item.description.indexOf(this.state.query) != -1).
-            map((item, index) => <Item itemClick={this.handleItemClick.bind(this, item)} key={item.id} name={item.name} description={item.description} id={item.id} image_url={item.image_url} link={item.link}/>)
+            map((item, index) => <Item itemClick={this.handleItemClick.bind(this, item)} key={item.id} name={item.name} description={item.description} id={item.id} image_url={item.image_url} link={item.link} index={index}/>)
   }
 
   render() {
     return <div>
       <input type="text" onChange={this.handleInputChange.bind(this)}/>
 
-      <div className="page-header">
-        <h1>Unfavorited</h1>
-      </div>
-      <ul className="list-group item-list-from-react">
-        {this.itemsDomElements(this.state.unfavoritedItems)}
-      </ul>
+      <section className="container">
+        <div className="page-header">
+          <h1>Unfavorited</h1>
+        </div>
+        <ul className="faq unstyled">
+          {this.itemsDomElements(this.state.unfavoritedItems)}
+        </ul>
+      </section>
 
-      <div className="page-header">
-        <h1>Favorited</h1>
-      </div>
-      <ul className="list-group item-list-from-react">
-        {this.itemsDomElements(this.state.favoritedItems)}
-      </ul>
-
+      <section className="container">
+        <div className="page-header">
+          <h1>Favorited</h1>
+        </div>
+        <ul className="faq unstyled">
+          {this.itemsDomElements(this.state.favoritedItems)}
+        </ul>
+      </section>
     </div>
   }
 }

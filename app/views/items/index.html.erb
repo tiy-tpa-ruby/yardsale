@@ -1,13 +1,25 @@
-<div class="page-header">
-  <% if logged_in? %>
-    <%= link_to new_item_path, class: 'btn btn-primary' do %>
-      <span class="glyphicon glyphicon-plus"></span>
-      New Item
-    <% end %>
-  <% end %>
-  <h1 Listing>items</h1>
-</div>
-
+<section id="title" class="emerald">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1>Listing Items</h1>
+                <p>Here are all the items up for sale</p>
+            </div>
+            <div class="col-sm-6">
+                <% if logged_in? %>
+                  <ul class="breadcrumb pull-right">
+                      <li>
+                        <%= link_to new_item_path, class: 'btn btn-primary' do %>
+                          <span class="glyphicon glyphicon-plus"></span>
+                          New Item
+                        <% end %>
+                      </li>
+                  </ul>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</section><!--/#title-->
 
 <!-- This is where the react component goes -->
 <div class="react-items"></div>
